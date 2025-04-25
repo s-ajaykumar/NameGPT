@@ -10,8 +10,8 @@ eval_iters = 200
 eval_interval = 500
 lr = 1e-3
 batch_size = 32
-block_size = 8
-n_embd = 252
+block_size = 256
+n_embd = 384
 n_blocks = 6
 n_heads = 6
 dropout_ratio = 0.2
@@ -172,18 +172,18 @@ class Transformer(nn.Module):
 # Model Initialization
 model = Transformer()
 m = model.to(device)
-print(f"Parameter count : {sum([p.nelement() for p in m.parameters()])}")
+print(f"Total parameters : {sum([p.nelement()for p in m.parameters()])} parameters\t{sum([p.nelement()for p in m.parameters()]) / 1e6:.2f}M parameters\n")
 print() 
 print(f"Model response(Before training)\n{decode(m.generate(torch.zeros((1, 1), dtype = torch.long), 500).tolist()[0])}")
 print() 
  
  
-#Train + Evaluation
+# Model training + evaluation
 optimizer = torch.optim.AdamW(m.parameters(), lr)
 for i in range(max_iters):
     if i%eval_interval == 0:
         losses = estimate_loss()
-        print(f"step {i}   : train_loss : {losses["train"]:2f}    val_loss : {losses["val"]:2f}")
+        print(f"step {i}   : train_loss : {losses["train"]:.2f}    val_loss : {losses["val"]:.2f}")
     x, y = get_batch("train")
     logits, loss = m(x, y)
     optimizer.zero_grad(set_to_none = True)
