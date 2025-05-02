@@ -5,15 +5,15 @@ import torch.nn.functional as F
 
 
 # Hyperparmeters
-batch_size = 4
+batch_size = 32
 block_size = 23
-n_embd = 32
+n_embd = 384
 n_heads = 4
 n_blocks = 4
 dropout_ratio = 0.2
-lr = 1e-3
-max_iters = 3000
-eval_interval = 300
+lr = 2e-4
+max_iters = 5001
+eval_interval = 500
 eval_iters = 200
 pad_token = 57
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
