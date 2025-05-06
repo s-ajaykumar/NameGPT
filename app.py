@@ -1,6 +1,6 @@
 # app.py
 import gradio as gr
-from model import load_model_and_generate_name
+from model import load_model, generate_name
 
 # Path to the model checkpoint
 MODEL_PATH = "NameGPT.pth"  # Update with the correct path
@@ -32,16 +32,21 @@ css = """
 }
 """
 
+try:
+    load_model(MODEL_PATH)
+except Exception as e:
+    print(f"Error loading model: {str(e)}")
+    
 def generate_male_name():
     try:
-        name = load_model_and_generate_name(MODEL_PATH, "male")
+        name = generate_name("male")
         return name
     except Exception as e:
         return f"Error: {str(e)}"
     
 def generate_female_name():
     try:
-        name = load_model_and_generate_name(MODEL_PATH, "female")
+        name = generate_name("female")
         return name
     except Exception as e:
         return f"Error: {str(e)}"
@@ -49,7 +54,7 @@ def generate_female_name():
 # Create Gradio interface
 with gr.Blocks(css = css) as demo:
     gr.Markdown("# NameGPT", elem_id = "title")
-    gr.Markdown("Click the button to generate a beautiful name for your baby!", elem_id = "instruction")
+    gr.Markdown("Click the button to generate a beautiful tamil name for your baby!", elem_id = "instruction")
     with gr.Row(elem_classes="button_container"):
         male_button = gr.Button("♂", elem_id="male_button")
         female_button = gr.Button("♀", elem_id="female_button")

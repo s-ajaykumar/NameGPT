@@ -106,8 +106,8 @@ class Transformer(nn.Module):
             ix = torch.cat((ix, next_ix), dim=-1)
 
 # Function to load model and generate a name
-def load_model_and_generate_name(model_path, gender):
-    global vocab_size, block_size, n_embd, n_heads, n_blocks, dropout_ratio, pad_token, device
+def load_model(model_path):
+    global vocab_size, block_size, n_embd, n_heads, n_blocks, dropout_ratio, pad_token, device, model, decode
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
     # Load checkpoint
@@ -134,6 +134,7 @@ def load_model_and_generate_name(model_path, gender):
     model = model.to(device)
     model.eval()
 
+def generate_name(gender):
     # Generate a name
     start_ix = 57 if gender == "male" else 2  #
     input = torch.full((1, 1), start_ix, device=device, dtype=torch.long)
