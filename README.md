@@ -3,7 +3,23 @@
 **NameGPT** is a Transformer-based model designed to generate male and female names.<br>
 Implemented it using pytorch.
 
-## Hyperparameters
+## Goal
+To create unique tamil names.
+
+## Data collection
+Scraped the internet using Selenium 
+
+## Data preprocessing 
+Built a tokenizer using BPE(Byte Pair Encoding) algorithm and the data collected.
+Tokenized the data.
+Added two different start tokens '~', '!' - one for boy names, another for girl names.
+Added an end token '.' and padded the inputs with a pad_token 
+
+## Model building 
+Implemented the transformer architecture using Pytorch from scratch.
+Trained with following hyperparameters:
+
+### Hyperparameters
 batch_size      = 32<br>
 block_size      = 23<br>
 n_embd          = 384<br>
@@ -16,5 +32,8 @@ eval_interval   = 500<br>
 eval_iters      = 200<br>
 pad_token       = 57<br>
 
-## Validation
+## Model validation
 val_loss        = 1.51<br>
+
+## Tech stack
+Implemented Gradio for UI

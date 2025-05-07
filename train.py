@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 
 # Hyperparmeters
-batch_size = 32
+batch_size = 4
 block_size = 23
 n_embd = 384
 n_heads = 6
