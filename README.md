@@ -10,13 +10,13 @@ To create unique tamil names.
 Scraped the internet using Selenium 
 
 ## Data preprocessing 
-Built a tokenizer using BPE(Byte Pair Encoding) algorithm and the data collected.
-Tokenized the data.
-Added two different start tokens '~', '!' - one for boy names, another for girl names.
+Built a tokenizer using BPE(Byte Pair Encoding) algorithm and the data collected.<br>
+Tokenized the data.<br>
+Added two different start tokens '~', '!' - one for boy names, another for girl names.<br>
 Added an end token '.' and padded the inputs with a pad_token 
 
 ## Model building 
-Implemented the transformer architecture using Pytorch from scratch.
+Implemented the transformer architecture using Pytorch from scratch.<br>
 Trained with following hyperparameters:
 
 ### Hyperparameters
@@ -30,7 +30,7 @@ lr              = 3e-4<br>
 max_iters       = 5001<br>
 eval_interval   = 500<br>
 eval_iters      = 200<br>
-pad_token       = 57<br>
+pad_token       = 57
 
 ## Model validation
 val_loss        = 1.51<br>
