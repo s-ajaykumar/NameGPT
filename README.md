@@ -1,6 +1,6 @@
 # NameGPT
 
-**NameGPT** is a Transformer-based model designed to generate male and female names.<br>
+**NameGPT** is a GPT and GPT2 - based model designed to generate male and female names.<br>
 Implemented it using pytorch.
 
 ## Goal
@@ -16,7 +16,7 @@ Added two different start tokens '~', '!' - one for boy names, another for girl 
 Added an end token '.' and padded the inputs with a pad_token 
 
 ## Model building 
-Implemented the transformer architecture using Pytorch from scratch.<br>
+Implemented both the GPT and GPT2 architecture using Pytorch from scratch.<br>
 Trained with following hyperparameters:
 
 ### Hyperparameters

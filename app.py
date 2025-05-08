@@ -1,6 +1,6 @@
 # app.py
 import gradio as gr
-from model import load_model, generate_name
+from GPT import load_model, generate_name
 
 # Path to the model checkpoint
 MODEL_PATH = "NameGPT.pth"  # Update with the correct path
