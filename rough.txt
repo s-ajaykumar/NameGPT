@@ -1,0 +1,47 @@
+!Zebraraja - 1
+~Gomam - 1
+!Mumdhthi - 0
+!Laranyikthi - 1
+!Likrigasha - 1
+!Santhira - 1
+!Sooitha - 1
+~Arashen - 1
+!Narija - 1
+~Aridan - 1
+
+
+!Zeularadany - 0
+~Nimoravmaban - 0
+!Lathivikthi - 1
+!Livarkatha - 1
+!Saveena - 1
+!Ashrvani - 0
+!Mikrina - 1
+~Mathirar - 1
+!Mathzuna - 1
+~Sbideen - 0
+
+
+
+!~nuthikan - 1
+~Heevaash - 1
+!Babarni - 2
+!KarthriGudhi - 0
+!Maghya - 1
+!Shaveenth - 1
+!SLigana - 1
+~Kiruthan - 1
+!Sanrshina - 0
+~KaHriganoolen - 0
+
+
+!Onavina - 1
+~Thriyann - 2
+!Naesmanthani - 1
+!Vaykar - 1
+!Hiyaadhni - 2
+!Shasina - 2
+!Sraasha - 2
+~Aesanthh - 2
+!Tharinna - 2
+~Kihinaveemaeth - 0
