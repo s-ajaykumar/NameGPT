@@ -28,9 +28,9 @@ torch.manual_seed(1337)
 @dataclass
 class Config:
     batch_size = 4
-    n_embd = 126
-    n_heads = 6
-    n_layers = 6
+    n_embd = 32
+    n_heads = 2
+    n_layers = 2
     dropout_ratio = 0.2
     lr = 3e-4
     max_iters = 3001
