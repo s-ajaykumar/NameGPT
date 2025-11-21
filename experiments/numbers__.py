@@ -1,5 +1,29 @@
-import math
-import time
+def generate_data():
+    with open("datasets/numbers.txt", "w") as f:
+        for i in range(100):
+            for j in range(100):
+                f.write(f"{i}+{j}={i+j}\n")
+        
+
+
+
+
+'''
+My experiment is in lines. Residual connections are powerful because input is add to the output of each block. It's
+like reminding the input at each block. The input does a huge change in a mlp beacuase it dot products with various
+number of neurons. So what if we don't make a huge change to the input? So i modified the mlp block such that 
+the out is calculate as usual but I only take the max value of output and multiply it with the input(x).
+So that at each mlp layer only one transformation is done to the input. 
+'''
+
+
+
+
+
+
+
+
+
 import torch
 import random
 import torch.nn as nn
@@ -14,15 +38,15 @@ torch.manual_seed(1337)
 @dataclass
 class Config:
     batch_size = 4
-    n_embd = 64
-    n_heads = 4
-    n_layers = 4
+    n_embd = 32
+    n_heads = 2
+    n_layers = 2
     dropout_ratio = 0.2
     lr = 3e-4
     max_iters = 3001
     eval_interval = 300
     eval_iters = 200
-    pad_token = 56
+    pad_token = 13
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 config = Config()
    
@@ -135,6 +159,8 @@ class MLP(nn.Module):
         out = self.c_fc(x)
         out = self.gelu(out)
         out = self.c_proj(out)
+        #max_fired = torch.max(out, dim = -1).values 
+        #out = x * max_fired.unsqueeze(2)
         return out
 
 
@@ -199,7 +225,7 @@ class GPT(nn.Module):
             logits, loss = m(x)
             logits = logits[:, -1, :]
             probs = F.softmax(logits, dim = -1)
-            topk_probs, topk_indices = torch.topk(probs, 50, dim = -1)
+            topk_probs, topk_indices = torch.topk(probs, 10, dim = -1)
             ix = torch.multinomial(topk_probs, num_samples = 1)
             xcol = torch.gather(topk_indices, -1, ix)
             if xcol == 2:
@@ -212,13 +238,13 @@ print("-"*80)
 print("EDA")
 print("-"*80)
 
-text = open("datasets/names.txt").read()
+text = open("datasets/numbers.txt").read()
 
 vocab = sorted(set(text))
-config.vocab_size = len(vocab)
+config.vocab_size = len(vocab) + 1
 print(f"Vocabulary : \n{vocab}\n\nVocab size : {config.vocab_size}\n")
 
-data = open("datasets/names.txt").read().splitlines()
+data = open("datasets/numbers.txt").read().splitlines()
 
 print(f"First ten samples before shuffling : \n{data[:10]}\n")
 random.shuffle(data)
@@ -264,13 +290,17 @@ train_model()
 
 
 # Inference
+random.seed(1337)
+torch.manual_seed(1337)
 print("-"*80)
 print("Inference started...")
 print("-"*80)
 max_gen = 10
 for _ in range(max_gen):
-    ix = random.choice([55, 1])
-    input = torch.full((1,1), ix, device = config.device)
+    num1 = random.choice(range(10))             
+    num2 = random.choice(range(10))
+    input = torch.tensor([[stoi[str(num1)], stoi['+']]])
+    print(input)
     out = m.generate(input)
     print(decode(out.tolist()[0]))
 print("-"*80)
