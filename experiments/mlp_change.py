@@ -13,7 +13,7 @@ So that at each mlp layer only one transformation is done to the input.
 
 
 
-
+import time
 import torch
 import random
 import torch.nn as nn
@@ -212,7 +212,7 @@ class GPT(nn.Module):
     
     def generate(self, x):
         while True:
-            logits, loss = m(x)
+            logits, loss = self(x)
             logits = logits[:, -1, :]
             probs = F.softmax(logits, dim = -1)
             topk_probs, topk_indices = torch.topk(probs, 50, dim = -1)
@@ -228,13 +228,13 @@ print("-"*80)
 print("EDA")
 print("-"*80)
 
-text = open("Dataset/names.txt").read()
+text = open("datasets/names.txt").read()
 
 vocab = sorted(set(text))
 config.vocab_size = len(vocab)
 print(f"Vocabulary : \n{vocab}\n\nVocab size : {config.vocab_size}\n")
 
-data = open("Dataset/names.txt").read().splitlines()
+data = open("datasets/names.txt").read().splitlines()
 
 print(f"First ten samples before shuffling : \n{data[:10]}\n")
 random.shuffle(data)
@@ -276,7 +276,10 @@ print(f"Total parameters : {sum([p.nelement()for p in m.parameters()])} paramete
 print("-"*80)
 print("Training started...")
 print("-"*80)
+t1 = time.time()
 train_model()
+t2 = time.time()
+print(f"Training time taken: {(t2-t1)*1000:.2f}\n")
 
 
 # Inference
