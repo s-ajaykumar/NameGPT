@@ -1,10 +1,7 @@
-# NameGPT
-
-**NameGPT** is a GPT and GPT2 - based model designed to generate male and female names.<br>
-Implemented it using pytorch.
-
-## Goal
-To create unique tamil names.
+# NameGPT 
+**About**: Character level language model.   
+**Use**: Generate male and female Tamil names.
+**Architectures**: GPT and GPT2 
 
 ## Data collection
 Scraped the internet using Selenium 
@@ -36,4 +33,6 @@ pad_token       = 57
 val_loss        = 1.51<br>
 
 ## Tech stack
-Implemented Gradio for UI
+Pytorch
+Gradio - UI
+Hugging face - Hosting
