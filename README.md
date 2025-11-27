@@ -1,6 +1,6 @@
 # NameGPT 
 **About**: Character level language model.   
-**Use**: Generate male and female Tamil names.
+**Use**: Generate male and female Tamil names.  
 **Architectures**: GPT and GPT2 
 
 ## Data collection
